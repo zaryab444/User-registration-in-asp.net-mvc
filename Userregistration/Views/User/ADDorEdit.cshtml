@@ -1,0 +1,87 @@
+﻿@model Userregistration.Models.Userlog
+
+@{
+    ViewBag.Title = "User Registration";
+}
+
+<h2>User Registration</h2>
+
+@using (Html.BeginForm("ADDorEdit", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Userlog</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Username, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Username)
+                @Html.ValidationMessageFor(model => model.Username)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Passwoord, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Passwoord)
+                @Html.ValidationMessageFor(model => model.Passwoord)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.confirmpassword, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.confirmpassword)
+                @Html.ValidationMessageFor(model => model.confirmpassword)
+            </div>
+        </div>
+
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsAdmin, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsAdmin)
+                @Html.ValidationMessageFor(model => model.IsAdmin)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-2">
+                <label class="label-danger">@ViewBag.error</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-2">
+                <label class="label-danger">@ViewBag.DuplicateMessage</label>
+            </div>
+        </div>
+
+        <div class ="form-group">
+            <div class="col-md-offset-2 col-md-2">
+                <label class="label-success">@ViewBag.sucessMessage</label>
+            </div>
+                 
+                 
+
+
+    </div>
+        </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
